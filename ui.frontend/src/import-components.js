@@ -1,6 +1,5 @@
-import Text from './components/Text'
-import Image from './components/Image'
-import AppPage from './components/AppPage'
+import Text from './components/Text/Text'
+import AppPage from './components/Page/AppPage'
 import { withComponentMappingContext, MapTo } from '@mavice/aem-vue-editable-components'
 
 // Text Component Mapping
@@ -14,14 +13,6 @@ MapTo('wknd-spa-vue/components/text')(
     resourceType: 'wknd-spa-vue/components/text'
   }
 )
-
-MapTo(['wknd-spa-vue/components/image'])(Image, {
-  emptyLabel: 'Image',
-
-  isEmpty: function (props) {
-    return !props || !props.src || props.src.trim().length < 1
-  }
-})
 
 // AppPage Mapping
 MapTo('wknd-spa-vue/components/page')(withComponentMappingContext(AppPage))

@@ -16,7 +16,7 @@
 
 <script>
 import DOMPurify from 'dompurify'
-import extractModelId from '../utils/extract-model-id'
+import extractModelId from '../../utils/extract-model-id'
 
 export default {
   name: 'Text',

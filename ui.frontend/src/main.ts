@@ -1,4 +1,4 @@
-import './components-to-map'
+import './import-components'
 import { AuthoringUtils, Constants, ModelManager } from '@adobe/aem-spa-page-model-manager'
 import Vue from 'vue'
 import App from './App'
