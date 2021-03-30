@@ -1,0 +1,52 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "npm run lint && vue-cli-service build --mode development && clientlib",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@adobe/aem-spa-component-mapping": "^1.0.7",
+    "@adobe/aem-spa-page-model-manager": "^1.0.0",
+    "@mavice/aem-vue-editable-components": "1.0.0-beta.1",
+    "bootstrap": "^4.6.0",
+    "bootstrap-vue": "^2.21.2",
+    "core-js": "^3.6.5",
+    "dompurify": "^2.2.6",
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^9.1.2"
+  },
+  "peerDependencies": {
+    "@adobe/aem-spa-component-mapping": "^1.0.7",
+    "@adobe/aem-spa-page-model-manager": "^1.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "aem-clientlib-generator": "^1.5.0",
+    "aemsync": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "reflect-metadata": "^0.1.13",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-assets-manifest": "^4.0.1"
+  },
+  "proxy": "http://localhost:4502/"
+}

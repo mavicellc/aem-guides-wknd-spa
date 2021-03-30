@@ -2,55 +2,38 @@
 
 This is the code companion for a series of tutorials designed for developers new to the **SPA Editor** feature in Adobe Experience Manager (AEM). There are two parallel versions of the tutorial:
 
-* [Create your first Angular SPA in AEM](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/overview.html)
-* [Create your first React SPA in AEM](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/overview.html)
+* [Create your first Angular SPA in AEM](https://docs-stg.corp.adobe.com/content/help/en/experience-manager-learn/tutorials/develop-spa-angular/overview.html)
+* [Create your first React SPA in AEM](https://docs.adobe.com/content/help/en/experience-manager-learn/tutorials/develop-spa-react/overview.html)
+* [Create your first Vue SPA in AEM](https://www.mavice.com/blog/vue-spa-editor-project)
 
-## Latest Code
+The starter and solution branches in this repository correspond to **Vue** versions of the tutorial.
 
-If you just want to build the **finished** version of each project:
+## Modules
 
-#### Angular
+The main parts of the project are:
 
-```shell
-$ git clone git@github.com:adobe/aem-guides-wknd-spa.git
-$ cd aem-guides-wknd-spa
-$ git checkout Angular/latest
-$ mvn clean install -PautoInstallSinglePackage
-```
+* **core**: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
+* **ui.apps**: contains the /apps (and /etc) parts of the project, ie JS&CSS clientlibs, components, templates and runmode specific configs
+* **ui.content**: contains sample content using the components from the ui.apps
+* **ui.tests**: Java bundle containing JUnit tests that are executed server-side. This bundle is not to be deployed onto production.
+* **ui.frontend**: an optional dedicated front-end build mechanism.
 
-#### React
+## How to build
 
-```shell
-$ git clone git@github.com:adobe/aem-guides-wknd-spa.git
-$ cd aem-guides-wknd-spa
-$ git checkout React/latest
-$ mvn clean install -PautoInstallSinglePackage
-```
+To build all the modules run in the project root directory the following command with Maven 3:
 
-Or download and install the compiled [AEM Packages from the latest release](https://github.com/adobe/aem-guides-wknd-spa/releases).
+    mvn clean install
 
-## Tutorial Branches
+If you have a running AEM instance you can build and package the whole project and deploy into AEM with
 
-The starter and solution branches in this repository correspond to **Angular** and **React** versions of the tutorial.
+    mvn clean install -PautoInstallSinglePackage
 
-### Angular Tutorials
+Or to deploy it to a publish instance, run
 
-| Tutorial | Starter Code | Solution |
-|----------|--------------|----------|
-| [SPA Editor Project](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/create-project.html) | [Angular/create-project-start](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/create-project-start) | [Angular/create-project-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/create-project-solution) |
-| [Integrate the SPA](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/integrate-spa.html) | [Angular/integrate-spa-start](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/integrate-spa-start) | [Angular/integrate-spa-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/integrate-spa-solution) |
-| [Map SPA Components](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/map-components.html) | [Angular/map-components-start](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/map-components-start) | [Angular/map-components-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/map-components-solution) |
-| [Navigation and routing](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/navigation-routing.html) | [Angular/navigation-routing-start](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/navigation-routing-start) | [Angular/navigation-routing-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/navigation-routing-solution) |
-| [Custom component](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/custom-component.html) | [Angular/custom-component-start](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/custom-component-start) | [Angular/custom-component-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/custom-component-solution) |
-| [Extend component](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-angular-tutorial/extend-component.html) | [Angular/extend-component-start](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/extend-component-start) | [Angular/extend-component-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/Angular/extend-component-solution) |
+    mvn clean install -PautoInstallSinglePackagePublish
 
-### React Tutorials
+### Building for AEM 6.x.x
 
-| Tutorial | Starter Code | Solution |
-|----------|--------------|----------|
-| [SPA Editor Project](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/create-project.html) | [React/create-project-start](https://github.com/adobe/aem-guides-wknd-spa/tree/React/create-project-start) | [React/create-project-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/React/create-project-solution) |
-| [Integrate the SPA](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/integrate-spa.html) | [React/integrate-spa-start](https://github.com/adobe/aem-guides-wknd-spa/tree/React/integrate-spa-start) | [React/integrate-spa-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/React/integrate-spa-solution) |
-| [Map SPA Components](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/map-components.html) | [React/map-components-start](https://github.com/adobe/aem-guides-wknd-spa/tree/React/map-components-start) | [React/map-components-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/React/map-components-solution) |
-| [Navigation and routing](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/navigation-routing.html) | [React/navigation-routing-start](https://github.com/adobe/aem-guides-wknd-spa/tree/React/navigation-routing-start) | [React/navigation-routing-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/React/navigation-routing-solution) |
-| [Custom component](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/custom-component.html) | [React/custom-component-start](https://github.com/adobe/aem-guides-wknd-spa/tree/React/custom-component-start) | [React/custom-component-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/React/custom-component-solution) |
-| [Extend component](https://docs.adobe.com/content/help/en/experience-manager-learn/spa-react-tutorial/extend-component.html) | [React/extend-component-start](https://github.com/adobe/aem-guides-wknd-spa/tree/React/extend-component-start) | [React/extend-component-solution](https://github.com/adobe/aem-guides-wknd-spa/tree/React/extend-component-solution) |
+The project has been designed for **AEM as a Cloud Service**. The project is also backward compatible with AEM **6.4.8** by adding the `classic` profile when executing a build, i.e:
+
+    mvn clean install -PautoInstallSinglePackage -Pclassic

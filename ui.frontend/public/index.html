@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="WKND SPA Vue" />
+  <link rel="icon" href="<%= VUE_APP_PUBLIC_URL %>/favicon.ico" />
+  <link rel="manifest" href="<%= VUE_APP_PUBLIC_URL %>/manifest.json" />
+  <title>WKND SPA Vue</title>
+  <!-- AEM page model -->
+  <meta
+          property="cq:pagemodel_root_url"
+          content="<%= VUE_APP_PAGE_MODEL_PATH%>"
+  />
+
+  <!-- AEM Base ClientLib -->
+  <link rel="stylesheet" href="/etc.clientlibs/wknd-spa-vue/clientlibs/clientlib-base.css" type="text/css" />
+
+  <!-- In development mode, redirect from "/" to app root -->
+  <script>
+  if ('<%= NODE_ENV%>' === 'development' && location.pathname === '/' && '<%= VUE_APP_ROOT %>') {
+    location.href = '<%= VUE_APP_ROOT %>';
+  }
+  </script>
+
+  <link href="/js/app.js" rel="preload" as="script">
+  <link href="/js/app.js" rel="preload" as="script"><link href="/js/chunk-vendors.js" rel="preload" as="script"></head>
+<body class="page basicpage">
+<noscript>
+  <strong>We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</noscript>
+<div id="spa-root"></div>
+<!-- built files will be auto injected -->
+<script type="text/javascript" src="/js/chunk-vendors.js"></script><script type="text/javascript" src="/js/app.js"></script></body>
+</html>
