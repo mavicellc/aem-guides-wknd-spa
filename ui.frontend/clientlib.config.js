@@ -58,7 +58,10 @@ module.exports = {
         cwd: '.',
         files: ['**/*.*'],
         flatten: false,
-        ignore: entrypoints
+        ignore: [
+          ...entrypoints.filter(fileName => fileName.endsWith('.js')),
+          ...entrypoints.filter(fileName => fileName.endsWith('.css'))
+        ]
       }
     }
   }

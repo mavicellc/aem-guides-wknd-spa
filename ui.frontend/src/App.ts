@@ -1,8 +1,9 @@
-import { Page, withModel } from '@mavice/aem-vue-editable-components'
-import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
+import { withModel } from '@mavice/aem-vue-editable-components'
+import { Component, Mixins } from 'vue-property-decorator'
+import { RouteHelperMixin } from '@/components/RouteHelper/RouteHelperMixin'
 
 @Component
-export class App extends (Page) {
+export class App extends Mixins(RouteHelperMixin) {
 }
 
 export default withModel(App)

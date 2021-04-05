@@ -44,9 +44,5 @@ export default {
 }
 
 </script>
-<style scoped>
-div {
-  font-family: 'Inconsolata', sans-serif;
-  font-size: 72px;
-}
+<style scoped lang="scss">
 </style>
