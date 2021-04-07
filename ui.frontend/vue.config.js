@@ -1,6 +1,13 @@
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 
 module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: '@import "@/styles/_variables.scss";'
+      }
+    }
+  },
   configureWebpack: config => {
     config.plugins = config.plugins.concat(
       new WebpackAssetsManifest({

@@ -1,0 +1,17 @@
+@import './styles/variables';
+
+body {
+  background-color: $body-bg;
+  font-family: $font-family-base;
+  margin: 0;
+  padding: 0;
+  font-size: $font-size-base;
+  text-align: left;
+  color: $text-color;
+  line-height: $line-height-base;
+}
+
+//spacing for header
+body.page {
+  padding-top: 75px;
+}
