@@ -1,7 +1,5 @@
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 
-console.log(require('@mavice/aem-vue-editable-components'))
-
 module.exports = {
   configureWebpack: config => {
     config.plugins = config.plugins.concat(
@@ -10,6 +8,7 @@ module.exports = {
       })
     )
   },
+  publicPath: process.env.VUE_APP_PUBLIC_URL,
   devServer: {
     proxy: {
       '': {
