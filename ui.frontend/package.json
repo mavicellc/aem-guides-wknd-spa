@@ -11,7 +11,7 @@
   "dependencies": {
     "@adobe/aem-spa-component-mapping": "^1.0.7",
     "@adobe/aem-spa-page-model-manager": "^1.0.0",
-    "@mavice/aem-vue-editable-components": "1.0.0-beta.1",
+    "@mavice/aem-vue-editable-components": "1.0.0-alpha.1",
     "core-js": "^3.6.5",
     "dompurify": "^2.2.6",
     "vue": "^2.6.12",
