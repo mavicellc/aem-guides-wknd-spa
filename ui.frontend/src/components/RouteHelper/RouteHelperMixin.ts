@@ -14,9 +14,11 @@
  ~ limitations under the License.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-import { VueConstructor } from 'vue'
-import { Page, Utils } from '@mavice/aem-vue-editable-components'
+import Vue, { VueConstructor } from 'vue'
+// import { Page, Utils, Constants, ComponentMapping } from '@mavice/aem-vue-editable-components'
 import { Component, Mixins } from 'vue-property-decorator'
+import { AuthoringUtils } from '@adobe/aem-spa-page-model-manager'
+import { ComponentMapping, Constants, Page, Utils } from '@mavice/aem-vue-editable-components'
 
 /**
  * A mixin that provides routes and route to component mapping for the child pages
@@ -25,34 +27,49 @@ import { Component, Mixins } from 'vue-property-decorator'
 
 @Component({})
 export class RouteHelperMixin extends Mixins(Page) {
-  created () {
-    if (this.cqChildren && this.$router) {
+  mounted () {
+    if (this.cqChildren) {
       // @ts-ignore
       Object.keys(this.cqChildren).map<VueConstructor>((itemKey, i) => {
         const itemProps = Utils.modelToProps(this.cqChildren[itemKey])
-        const ItemComponent: any = this.state.componentMapping.get(itemProps.cqType)
-        const isInEditor = this.isInEditor
+        const ItemComponent: any = ComponentMapping.get(itemProps.cqType)
+        const path = itemProps.cqPath.substring(itemProps.cqPath.lastIndexOf('/') + 1)
         if (ItemComponent) {
-          this.$router.addRoute('root', {
-            path: itemProps.cqPath + '.html',
-            name: itemProps.cqPath + '.html',
-            props: {
-              ...itemProps,
-              containerProps: itemProps,
-              cqPath: itemProps.cqPath,
-              isInEditor: isInEditor
-            },
-            component: ItemComponent
-          })
+          this.$router.addRoute('root',
+            {
+              path: '(.*)' + path + '.html' || '',
+              component: Vue.extend({
+                name: 'Route',
+                render (h: Function) {
+                  return h(ItemComponent, {
+                    props: {
+                      ...itemProps,
+                      cqPath: itemProps.cqPath,
+                      isInEditor: AuthoringUtils.isInEditor(),
+                      injectPropsOnInit: false
+                    }
+                  })
+                }
+              })
+            }
+          )
         }
       })
     }
   }
 
   render (createElement: Function) {
-    return createElement('div', [
-      ...this.childComponents.map((component) => createElement(component)),
-      createElement('router-view')
-    ])
+    return createElement(
+      'div',
+      {
+        class: [Constants._PAGE_CLASS_NAMES],
+        attrs: {
+          'data-cq-data-path': this.cqPath
+        }
+      }, [
+        ...this.childComponents.map((component) => createElement(component)),
+        createElement('router-view')
+      ]
+    )
   }
 }
