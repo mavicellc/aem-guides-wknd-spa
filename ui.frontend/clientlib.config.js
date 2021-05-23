@@ -14,7 +14,6 @@
  *  limitations under the License.
  */
 
-
 const path = require('path')
 const getEntrypoints = require('./utils/entrypoints')
 
