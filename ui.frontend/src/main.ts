@@ -12,41 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
     new Vue({
       router: new VueRouter({
         mode: 'history',
-        routes: [
-          {
-            name: 'root',
-            path: '*',
-            component: Vue.extend({
-              render (createElement: Function) {
-                return createElement(App, {
-                  props: {
-                    cqChildren: pageModel[Constants.CHILDREN_PROP],
-                    cqItems: pageModel[Constants.ITEMS_PROP],
-                    cqItemsOrder: pageModel[Constants.ITEMS_ORDER_PROP],
-                    cqPath: pageModel[Constants.PATH_PROP],
-                    isInEditor: AuthoringUtils.isInEditor(),
-                    locationPathname: window.location.pathname,
-                    injectPropsOnInit: true
-                  }
-                })
-              }
-            })
-          }
-        ]
+        routes: []
       }),
       render (createElement: Function) {
-        return createElement(
-          'div',
-          {
-            class: [Constants._PAGE_CLASS_NAMES],
-            attrs: {
-              'data-cq-data-path': pageModel[Constants.PATH_PROP],
-              id: 'spa-root'
-            }
-          }, [
-            createElement('router-view')
-          ]
-        )
+        return createElement(App, {
+          props: {
+            cqChildren: pageModel[Constants.CHILDREN_PROP],
+            cqItems: pageModel[Constants.ITEMS_PROP],
+            cqItemsOrder: pageModel[Constants.ITEMS_ORDER_PROP],
+            cqPath: pageModel[Constants.PATH_PROP],
+            isInEditor: AuthoringUtils.isInEditor(),
+            locationPathname: window.location.pathname,
+            injectPropsOnInit: true
+          }
+        })
       }
     }).$mount('#spa-root')
   })

@@ -1,6 +1,6 @@
 import { Component, Mixins } from 'vue-property-decorator'
-import { RouteHelperMixin } from '@/components/RouteHelper/RouteHelperMixin'
+import { Page } from '@mavice/aem-vue-editable-components'
 
 @Component
-export default class App extends Mixins(RouteHelperMixin) {
+export default class App extends Mixins(Page) {
 }
