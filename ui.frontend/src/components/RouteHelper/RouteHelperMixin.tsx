@@ -15,7 +15,6 @@
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 import Vue, { VueConstructor } from 'vue'
-// import { Page, Utils, Constants, ComponentMapping } from '@mavice/aem-vue-editable-components'
 import { Component, Mixins } from 'vue-property-decorator'
 import { AuthoringUtils } from '@adobe/aem-spa-page-model-manager'
 import { ComponentMapping, Constants, Page, Utils } from '@mavice/aem-vue-editable-components'
@@ -30,7 +29,7 @@ export class RouteHelperMixin extends Mixins(Page) {
   mounted () {
     if (this.cqChildren) {
       // @ts-ignore
-      Object.keys(this.cqChildren).map<VueConstructor>((itemKey, i) => {
+      Object.keys(this.cqChildren).map<VueConstructor>((itemKey) => {
         const itemProps = Utils.modelToProps(this.cqChildren[itemKey])
         const ItemComponent: any = ComponentMapping.get(itemProps.cqType)
         const path = itemProps.cqPath.substring(itemProps.cqPath.lastIndexOf('/') + 1)
@@ -58,18 +57,10 @@ export class RouteHelperMixin extends Mixins(Page) {
     }
   }
 
-  render (createElement: Function) {
-    return createElement(
-      'div',
-      {
-        class: [Constants._PAGE_CLASS_NAMES],
-        attrs: {
-          'data-cq-data-path': this.cqPath
-        }
-      }, [
-        ...this.childComponents.map((component) => createElement(component)),
-        createElement('router-view')
-      ]
-    )
+  render () {
+    return <div class={Constants._PAGE_CLASS_NAMES} data-cq-data-path={this.cqPath}>
+      {this.childComponents}
+      <router-view></router-view>
+    </div>
   }
 }
