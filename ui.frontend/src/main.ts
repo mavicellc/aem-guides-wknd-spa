@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     cqPath: pageModel[Constants.PATH_PROP],
                     isInEditor: AuthoringUtils.isInEditor(),
                     locationPathname: window.location.pathname,
-                    injectPropsOnInit: true
+                    injectPropsOnInit: false
                   }
                 })
               }
